@@ -2,7 +2,7 @@ import React from "react";
 
 export const SignIn = () => {
   return (
-    <div className="w-full h-screen max-w-xs container mt-4 m-auto flex flex-col align-center justify-center">
+    <div className="w-full max-w-xs container mt-4 m-auto flex flex-col align-center justify-center">
       <div className="w-full text-center">
         <h2 className="text-xl">Iniciar Sesion</h2>
       </div>

@@ -4,9 +4,13 @@ import "./App.scss";
 import "./tailwind.output.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Navbar } from "./components/Navbar";
-import { SignIn } from "./pages/signIn/SignIn";
-import { Home } from "./pages/home/Home";
-import { SignUp } from "./pages/signUp/SignUp";
+import routes from "./config/routes";
+
+// routes can be map in this way if needed
+
+// const appRoutes = routes.map(({ path, component }) => (
+//   <Route exact={true} key={path} path={path} component={component} />
+// ));
 
 const App = () => {
   return (
@@ -15,21 +19,14 @@ const App = () => {
         <div>
           <Navbar />
           <Switch>
-            <Route path="/about">
-              <About />
-            </Route>
-            <Route path="/users">
-              <Users />
-            </Route>
-            <Route path="/signin">
-              <SignIn />
-            </Route>
-            <Route path="/signup">
-              <SignUp />
-            </Route>
-            <Route path="/">
-              <Home />
-            </Route>
+            {routes.map(({ path, component }) => (
+              <Route
+                exact={true}
+                key={path}
+                path={path}
+                component={component}
+              />
+            ))}
           </Switch>
         </div>
       </Router>
