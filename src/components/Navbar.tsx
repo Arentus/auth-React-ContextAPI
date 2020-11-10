@@ -1,7 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
+// import { useAuth } from "../context/useAuth";
 
 export const Navbar = () => {
+  // const auth = useAuth();
+
   return (
     <nav className="flex w-full items-center justify-between flex-wrap bg-blue-600 p-6">
       <div className="flex items-center flex-shrink-0 text-white mr-6">

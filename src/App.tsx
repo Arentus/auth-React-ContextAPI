@@ -5,41 +5,26 @@ import "./tailwind.output.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Navbar } from "./components/Navbar";
 import routes from "./config/routes";
+import { ProvideAuth } from "./context/useAuth";
 
 // routes can be map in this way if needed
-
 // const appRoutes = routes.map(({ path, component }) => (
 //   <Route exact={true} key={path} path={path} component={component} />
 // ));
 
 const App = () => {
   return (
-    <div>
+    <ProvideAuth>
       <Router>
-        <div>
-          <Navbar />
-          <Switch>
-            {routes.map(({ path, component }) => (
-              <Route
-                exact={true}
-                key={path}
-                path={path}
-                component={component}
-              />
-            ))}
-          </Switch>
-        </div>
+        <Navbar />
+        <Switch>
+          {routes.map(({ path, component }) => (
+            <Route exact={true} key={path} path={path} component={component} />
+          ))}
+        </Switch>
       </Router>
-    </div>
+    </ProvideAuth>
   );
 };
-
-function About() {
-  return <h2>About</h2>;
-}
-
-function Users() {
-  return <h2>Users</h2>;
-}
 
 export default App;

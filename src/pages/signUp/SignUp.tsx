@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import { useAuth } from "../../context/useAuth";
 
 export const SignUp = () => {
   const [values, setValues] = useState({
@@ -7,6 +8,15 @@ export const SignUp = () => {
     user: "",
     password: "",
   });
+  const auth = useAuth();
+
+  const signUp = (e: any) => {
+    auth
+      .signup(values.name, values.email, values.user, values.password)
+      .then((res: any) => {
+        console.log(res);
+      });
+  };
 
   const handleChange = (prop: any) => (
     e: React.ChangeEvent<HTMLInputElement>
@@ -91,9 +101,7 @@ export const SignUp = () => {
           <button
             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
             type="button"
-            onClick={() => {
-              console.log(values);
-            }}
+            onClick={signUp}
           >
             Registrarse
           </button>
